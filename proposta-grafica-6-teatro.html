@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pitcha l'Amico – Proposta 6 Teatro</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--curt:#8E0F1E;--curt2:#6B0916;--red:#E81F32;--cream:#FCEFB4;--paper:#F7E9C0;--gold:#D9A441;--ink:#1A0D0D}
+*{box-sizing:border-box;margin:0}
+body{font-family:'IBM Plex Mono',monospace;background:var(--curt2);color:var(--cream);line-height:1.6;overflow-x:hidden;font-size:15px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:.03em;line-height:.95}
+.note{background:#000;color:var(--gold);font-size:11px;text-align:center;padding:6px;letter-spacing:.1em}
+.curtain{background:repeating-linear-gradient(90deg,var(--curt) 0 46px,var(--curt2) 46px 62px,var(--curt) 62px 100px);box-shadow:inset 0 -60px 80px -40px rgba(0,0,0,.6)}
+nav{background:#000;border-bottom:3px solid var(--gold)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+.logo{font-family:'Bebas Neue';font-size:30px;letter-spacing:.08em;color:var(--gold)}
+.menu{display:flex;gap:26px;font-size:12px;text-transform:uppercase;letter-spacing:.14em;align-items:center}.menu a:hover{color:var(--gold)}
+.btn{display:inline-block;background:var(--gold);color:var(--ink);font-family:'Bebas Neue';font-size:22px;letter-spacing:.08em;padding:12px 30px;border:2px solid var(--ink);box-shadow:5px 5px 0 #000;transition:.15s;cursor:pointer}
+.btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 #000}
+.btn.sm{font-size:17px;padding:8px 20px}.btn.r{background:var(--red);color:#fff;border-color:#000}
+
+.hero{padding:90px 0 120px;text-align:center;position:relative}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 50% 25%,rgba(255,220,130,.45),transparent 70%)}
+.hero .wrap{position:relative}
+.pres{letter-spacing:.4em;font-size:12px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.hero h1{font-size:clamp(62px,12vw,170px);color:var(--cream);text-shadow:0 4px 0 #000,0 0 40px rgba(255,200,100,.3)}
+.hero h1 b{color:var(--gold);font-weight:400}
+.sub{font-family:'Playfair Display',serif;font-style:italic;font-size:24px;margin:20px auto 34px;max-width:560px}
+.stage{height:26px;background:linear-gradient(#5c3b1b,#2a1707);border-top:4px solid var(--gold);position:absolute;bottom:0;left:0;right:0}
+
+section{padding:84px 0}
+.light{background:var(--paper);color:var(--ink)}
+.kick{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.light .kick{color:var(--curt)}
+h2{font-size:clamp(46px,7vw,86px);margin-bottom:12px}
+.lead{font-family:'Playfair Display',serif;font-size:21px;font-style:italic;max-width:560px;margin-bottom:44px}
+
+.tk{display:grid;grid-template-columns:1fr 190px;background:var(--cream);color:var(--ink);margin-bottom:28px;position:relative;filter:drop-shadow(6px 6px 0 rgba(0,0,0,.45));-webkit-mask:radial-gradient(circle 14px at 0 50%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 50%,transparent 98%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 14px at 0 50%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 50%,transparent 98%,#000) right/51% 100% no-repeat}
+.tk .main{padding:26px 34px;display:grid;grid-template-columns:110px 1fr;gap:26px;align-items:center}
+.tk .dt{font-family:'Bebas Neue';font-size:80px;line-height:.85;color:var(--red);text-align:center}.tk .dt small{display:block;font-size:24px;color:var(--ink);letter-spacing:.1em}
+.tk h3{font-size:50px;color:var(--ink)}.tk p{font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.tk .stub{border-left:3px dashed var(--ink);padding:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;text-align:center;font-size:11px;text-transform:uppercase;letter-spacing:.1em;background:#fff6d0}
+.tk .stub b{font-family:'Bebas Neue';font-size:30px;letter-spacing:.06em;color:var(--curt)}
+.tk.sold{opacity:.65}.tk.sold .dt{color:#777}
+
+.acts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:3px solid var(--ink)}
+.act{padding:34px 28px;border-right:3px solid var(--ink)}.act:last-child{border:0}
+.act .n{font-family:'Bebas Neue';font-size:20px;letter-spacing:.2em;color:var(--curt)}
+.act h3{font-size:50px;margin:6px 0 12px}.act p{font-size:14px}
+
+.cast{display:grid;grid-template-columns:repeat(2,1fr);gap:0 60px}
+.cast div{padding:20px 0;border-bottom:1px dotted var(--gold);display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.cast b{font-family:'Bebas Neue';font-weight:400;font-size:32px;letter-spacing:.04em}.cast span{font-size:13px;text-align:right;color:#e8d6a0}
+
+.audition{background:var(--curt)}
+.audition .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+form{background:var(--cream);color:var(--ink);padding:30px;display:grid;gap:14px;border:3px solid #000;box-shadow:8px 8px 0 #000}
+form h3{font-size:30px;color:var(--curt)}
+input,textarea{font:inherit;padding:11px 12px;border:2px solid var(--ink);background:#fffbe9;width:100%}textarea{min-height:80px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.chk{font-size:11px;display:flex;gap:8px}.chk input{width:auto}
+
+.press{display:flex;flex-wrap:wrap;gap:10px 40px;font-family:'Playfair Display',serif;font-style:italic;font-size:26px}
+.press span:before{content:"“";color:var(--gold)}.press span:after{content:"”";color:var(--gold)}
+details{border-top:2px solid var(--ink);padding:18px 0}details:last-of-type{border-bottom:2px solid var(--ink)}
+summary{cursor:pointer;font-family:'Bebas Neue';font-size:32px;letter-spacing:.04em;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"+";color:var(--curt)}details[open] summary::after{content:"–"}details p{margin-top:6px;max-width:620px}
+footer{background:#000;padding:40px 0;font-size:12px;letter-spacing:.1em;text-transform:uppercase}footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}footer a{margin-left:20px;color:var(--gold)}
+.spec{background:#111;padding:50px 0}.sw{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.sw div{width:110px;font-size:10px}.sw i{display:block;height:50px;border:1px solid #444;margin-bottom:5px}
+
+@media(max-width:820px){.menu a:not(.btn){display:none}.tk{grid-template-columns:1fr}.tk .main{grid-template-columns:90px 1fr;padding:20px}.tk .stub{border-left:0;border-top:3px dashed var(--ink);flex-direction:row;justify-content:space-between}.acts,.cast,.audition .wrap{grid-template-columns:1fr}.act{border-right:0;border-bottom:3px solid var(--ink)}.two{grid-template-columns:1fr}.tk{-webkit-mask:none;mask:none}}
+</style>
+</head>
+<body>
+<div class="note">PROPOSTA 6 – TEATRO / CARTELLONE LIVE · TESTI ED EVENTI SEGNAPOSTO</div>
+<nav><div class="wrap"><a class="logo" href="#">Pitcha l'Amico</a>
+<div class="menu"><a href="#format">Il format</a><a href="#cartellone">Cartellone</a><a href="#provino">Provino</a><a href="#faq">FAQ</a><a class="btn sm" href="#cartellone">Biglietti</a></div></div></nav>
+
+<header class="hero curtain"><div class="wrap">
+<div class="pres">Stasera in scena</div>
+<h1>Pitcha il tuo amico <b>single</b></h1>
+<p class="sub">Cinque minuti di palco, un pubblico che ascolta e una serata da ricordare.</p>
+<a class="btn" href="#cartellone">Vedi il cartellone</a>&nbsp;&nbsp;<a class="btn r" href="#provino">Presenta un amico</a>
+</div><div class="stage"></div></header>
+
+<section id="cartellone" style="background:var(--curt2)"><div class="wrap">
+<div class="kick">In cartellone</div><h2>Prossime serate</h2><p class="lead">Scegli lo spettacolo, stacca il tuo biglietto: il QR code arriva via email.</p>
+<div class="tk"><div class="main"><div class="dt">21<small>NOV</small></div><div><h3>Milano</h3><p>Venerdì · ore 20:30 · Locale da definire · Ultimi posti</p></div></div><div class="stub"><b>Platea</b><a class="btn sm r" href="#">Acquista</a></div></div>
+<div class="tk"><div class="main"><div class="dt">05<small>DIC</small></div><div><h3>Torino</h3><p>Venerdì · ore 20:30 · Locale da definire · Disponibile</p></div></div><div class="stub"><b>Platea</b><a class="btn sm r" href="#">Acquista</a></div></div>
+<div class="tk sold"><div class="main"><div class="dt">18<small>GEN</small></div><div><h3>Roma</h3><p>Sabato · ore 21:00 · Tutto esaurito</p></div></div><div class="stub"><b>Sold out</b><a class="btn sm" href="#">Lista d'attesa</a></div></div>
+</div></section>
+
+<section class="light" id="format"><div class="wrap">
+<div class="kick">Lo spettacolo</div><h2>Tre atti</h2><p class="lead">Dal biglietto all'applauso, senza imbarazzo.</p>
+<div class="acts">
+<div class="act"><div class="n">ATTO I</div><h3>Scegli l'evento</h3><p>Trova la serata nella tua città. Più biglietti in un solo acquisto, se vieni in compagnia.</p></div>
+<div class="act"><div class="n">ATTO II</div><h3>Prepara il pitch</h3><p>Pitcha un amico o fatti presentare: cinque minuti, anche con un PDF di slide.</p></div>
+<div class="act"><div class="n">ATTO III</div><h3>Conosci le persone</h3><p>Si esce dal palco e si chiacchiera. Le connessioni continuano oltre la serata.</p></div>
+</div></div></section>
+
+<section><div class="wrap">
+<div class="kick">Il cast</div><h2>Per chi è</h2><br>
+<div class="cast"><div><b>Single 25–40</b><span>Gente nuova, senza app</span></div><div><b>Amici di single</b><span>Racconta quanto è bravo</span></div><div><b>Introversi</b><span>C'è chi parla per voi</span></div><div><b>LGBTQ+</b><span>Spazio inclusivo</span></div></div>
+</div></section>
+
+<section class="audition curtain" id="provino"><div class="wrap">
+<div><div class="kick">Casting aperto</div><h2>Hai un amico da portare sul palco?</h2><p class="lead" style="margin:0">Compila il provino: ti ricontattiamo per fissare la data e preparare il pitch.</p></div>
+<form onsubmit="return false"><h3>Modulo di provino</h3><div class="two"><input placeholder="Il tuo nome"><input placeholder="Email"></div><input placeholder="Nome del tuo amico"><textarea placeholder="Perché dovremmo conoscerlo?"></textarea>
+<label class="chk"><input type="checkbox"> Il mio amico è d'accordo e accetto l'informativa privacy.</label><button class="btn r">Invia candidatura</button></form>
+</div></section>
+
+<section class="light"><div class="wrap"><div class="kick">La critica</div><br><div class="press"><span>la Repubblica</span><span>Il Post</span><span>Famiglia Cristiana</span><span>MilanoToday</span><span>Radio Deejay</span></div></div></section>
+
+<section class="light" id="faq" style="padding-top:0"><div class="wrap" style="max-width:780px"><div class="kick">FAQ</div><h2>Dietro le quinte</h2><br>
+<details open><summary>Devo venire con un amico?</summary><p>No, puoi venire anche da solo.</p></details>
+<details><summary>Dress code?</summary><p>Smart casual.</p></details>
+<details><summary>Come preparo il pitch?</summary><p>Cinque minuti a voce, anche con un PDF di massimo 10 pagine.</p></details>
+<details><summary>Posso acquistare più biglietti insieme?</summary><p>Sì, ognuno con il proprio QR code.</p></details>
+</div></section>
+
+<footer><div class="wrap"><span>© Pitcha l'Amico</span><div><a href="#">Termini</a><a href="#">Privacy</a><a href="#">Cookie</a><a href="#">Contatti</a></div></div></footer>
+<div class="spec"><div class="wrap"><div class="kick">Palette e tipografia</div><p style="font-family:'Bebas Neue';font-size:38px;color:var(--cream)">Bebas Neue <span style="font-family:'IBM Plex Mono';font-size:13px">titoli · IBM Plex Mono testi · Playfair Display corsivi</span></p>
+<div class="sw"><div><i style="background:#8E0F1E"></i>Sipario #8E0F1E</div><div><i style="background:#E81F32"></i>Rosso brand #E81F32</div><div><i style="background:#FCEFB4"></i>Crema #FCEFB4</div><div><i style="background:#D9A441"></i>Oro #D9A441</div><div><i style="background:#1A0D0D"></i>Nero #1A0D0D</div></div></div></div>
+</body></html>

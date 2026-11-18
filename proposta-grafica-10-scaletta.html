@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pitcha l'Amico – Proposta 10 La serata al centro</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf3e6;--ink:#1a1214;--red:#E81F32;--coral:#ff6b6b;--cream:#fcefb4;--mute:#7d6b6b;--line:#e6d9c6;--card:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Bricolage Grotesque',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;overflow-x:hidden}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-weight:800;letter-spacing:-.04em;line-height:1}
+.serif{font-family:'Instrument Serif',serif;font-weight:400}
+.note{background:var(--ink);color:var(--cream);font-size:12px;text-align:center;padding:7px 12px}
+.kick{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+
+/* nav */
+header{position:sticky;top:0;z-index:10;background:rgba(251,243,230,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:14px}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.04em}.logo b{color:var(--red)}
+.menu{display:flex;gap:22px;align-items:center;font-size:14px;font-weight:500;color:var(--mute)}
+.menu a:hover,.menu a.on{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--red);color:#fff;font-weight:700;font-size:15px;padding:13px 24px;border-radius:999px;transition:.18s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(232,31,50,.28)}
+.btn.sm{padding:9px 18px;font-size:13px}
+.btn.dark{background:var(--ink)}.btn.dark:hover{box-shadow:0 10px 22px rgba(0,0,0,.25)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}.btn.ghost:hover{background:var(--ink);color:#fff;box-shadow:inset 0 0 0 2px var(--ink)}
+.btn[disabled]{opacity:.45;pointer-events:none}
+@media(max-width:760px){.menu .h{display:none}}
+
+/* pagine */
+.page{display:none;animation:in .35s ease}.page.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(10px)}}
+section{padding:70px 0}
+h2.t{font-size:clamp(32px,4.6vw,54px);margin-bottom:12px}
+.lead{color:var(--mute);font-size:18px;max-width:560px;margin-bottom:34px}
+
+/* HOME hero */
+.hero{padding:54px 0 70px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.hero h1{font-size:clamp(40px,6.4vw,84px);margin-bottom:18px}
+.hero h1 em{font-family:'Instrument Serif',serif;font-weight:400;font-style:italic;letter-spacing:-.02em;color:var(--red)}
+.hero p.sub{font-size:19px;color:var(--mute);max-width:470px;margin-bottom:26px}
+.next{background:var(--ink);color:#fbf3e6;border-radius:28px;padding:clamp(22px,3vw,34px);transform:rotate(1deg);position:relative}
+.next .lab{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);font-weight:700}
+.next h3{font-size:clamp(34px,4vw,52px);margin:8px 0 2px}
+.next .where{color:#c9b8b2;font-size:15px;margin-bottom:18px}
+.count{display:flex;gap:10px;margin-bottom:20px}
+.count div{background:#2a1d21;border-radius:12px;padding:8px 12px;text-align:center;min-width:56px}
+.count b{display:block;font-size:26px;font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.count span{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#b8a8a2}
+.mini{list-style:none;display:grid;gap:8px;margin-bottom:20px;border-top:1px dashed #4a363c;padding-top:16px}
+.mini li{font-size:14px;color:#e8d9cf;display:flex;gap:10px}.mini li b{color:var(--cream);font-weight:700;flex:none}
+.mini .more{color:#b8a8a2}
+@media(max-width:820px){.hero-grid{grid-template-columns:minmax(0,1fr)}.next{transform:none}}
+
+/* due ingressi */
+.gates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:-20px}
+.gate{display:flex;flex-direction:column;gap:10px;border-radius:26px;padding:clamp(22px,3vw,34px);min-height:230px;transition:.2s;justify-content:space-between}
+.gate:hover{transform:translateY(-6px) rotate(-.5deg)}
+.gate.a{background:var(--red);color:#fff}.gate.b{background:var(--cream)}
+.gate small{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.gate h3{font-size:clamp(30px,3.6vw,44px)}
+.gate p{font-size:16px;max-width:360px;opacity:.9}
+.gate .go{font-weight:700;font-size:15px}
+@media(max-width:700px){.gates{grid-template-columns:minmax(0,1fr);margin-top:0}}
+
+/* format legato alla serata */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:30px}
+.step{border-top:3px solid var(--ink);padding-top:14px}
+.step i{font-family:'Instrument Serif',serif;font-size:42px;color:var(--red);font-style:italic;line-height:1}
+.step h3{font-size:22px;margin:6px 0 6px}
+.step p{color:var(--mute);font-size:15px}
+@media(max-width:760px){.steps{grid-template-columns:minmax(0,1fr)}}
+
+/* elenco serate */
+.evs{display:grid;gap:12px}
+.ev{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:20px;align-items:center;background:var(--card);border-radius:20px;padding:14px 20px 14px 14px;box-shadow:inset 0 0 0 2px var(--ink);transition:.18s}
+.ev:hover{transform:translateX(6px);box-shadow:inset 0 0 0 2px var(--ink),-6px 6px 0 var(--ink)}
+.ev .d{background:var(--cream);border-radius:14px;text-align:center;padding:10px 6px}
+.ev .d b{font-size:34px;font-weight:800;letter-spacing:-.05em;line-height:.9;display:block}
+.ev .d span{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.ev h3{font-size:22px}.ev p{font-size:14px;color:var(--mute)}
+.ev .pill{display:inline-block;font-size:12px;font-weight:700;background:var(--line);border-radius:99px;padding:2px 10px;margin-top:6px}
+.ev .pill.hot{background:var(--coral);color:#fff}
+@media(max-width:640px){.ev{grid-template-columns:76px minmax(0,1fr)}.ev>.btn{grid-column:1/-1}}
+
+.past{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.ph{aspect-ratio:1;border-radius:18px;background:repeating-linear-gradient(135deg,#eadcc9 0 14px,#f1e5d3 14px 28px);display:grid;place-items:end start;padding:12px;font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--mute);text-transform:uppercase}
+@media(max-width:700px){.past{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* SERATA */
+.crumb{font-size:14px;color:var(--mute);padding:22px 0 0}.crumb a{text-decoration:underline;text-underline-offset:3px}
+.sh{padding:26px 0 40px}
+.sh-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,4vw,54px);align-items:start}
+.sh h1{font-size:clamp(44px,7vw,92px);margin-bottom:8px}
+.sh .when{font-size:20px;color:var(--mute);margin-bottom:26px}
+.ticket{position:sticky;top:84px;background:var(--card);border-radius:26px;padding:26px;box-shadow:inset 0 0 0 2px var(--ink)}
+.ticket .price{font-size:48px;font-weight:800;letter-spacing:-.05em}.ticket .price small{font-size:15px;color:var(--mute);letter-spacing:0;font-weight:500}
+.qty{display:flex;align-items:center;justify-content:space-between;margin:16px 0;padding:10px 0;border-block:1px dashed var(--line)}
+.qty div{display:flex;align-items:center;gap:14px}
+.qty button{width:36px;height:36px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--ink);font-weight:800;font-size:18px}
+.qty button:hover{background:var(--ink);color:#fff}
+.qty output{font-size:22px;font-weight:800;min-width:20px;text-align:center}
+.tt{margin:14px 0;border-block:1px dashed var(--line)}
+.tt-r{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:12px 0;border-top:1px dashed var(--line)}
+.tt-r:first-child{border-top:0}
+.tt-r b{font-size:16px;display:block}.tt-r span{font-size:13px;color:var(--mute)}
+.tt-r .pr{font-weight:800;font-size:16px;white-space:nowrap}
+.tt-c{grid-row:1/3;grid-column:2;display:flex;align-items:center;gap:10px}
+.tt-c button{width:30px;height:30px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--ink);font-weight:800;font-size:16px}
+.tt-c button:hover{background:var(--ink);color:#fff}
+.tt-c output{min-width:18px;text-align:center;font-weight:800;font-size:18px}
+.tt-r.has{background:#fffaf0}
+.bar{height:8px;background:var(--line);border-radius:9px;overflow:hidden;margin:12px 0 6px}
+.bar b{display:block;height:100%;background:var(--red)}
+.fine{font-size:13px;color:var(--mute)}
+.buy-msg{display:none;margin-top:14px;background:var(--cream);border-radius:14px;padding:12px 14px;font-size:14px}
+.buy-msg.on{display:block}
+@media(max-width:860px){.sh-grid{grid-template-columns:minmax(0,1fr)}.ticket{position:static}}
+
+.lineup{margin-top:10px}
+.lineup h2{font-size:clamp(30px,4vw,46px);margin-bottom:6px}
+.lu{display:grid;gap:0;margin-top:22px}
+.slot{display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;padding:20px 0;border-top:2px solid var(--ink)}
+.slot:last-child{border-bottom:2px solid var(--ink)}
+.slot .n{font-family:'Instrument Serif',serif;font-style:italic;font-size:40px;color:var(--red);line-height:.9}
+.slot .by{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.slot h3{font-size:clamp(22px,2.6vw,30px);margin:4px 0 6px}
+.slot p.q{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(20px,2.2vw,26px);line-height:1.15;color:#4a3a3d}
+a.slot{position:relative;transition:.18s;color:inherit}
+a.slot:hover{background:rgba(255,255,255,.55);padding-left:12px;padding-right:12px;margin:0 -12px}
+.slot .go{display:inline-block;margin-top:10px;font-size:13px;font-weight:700;color:var(--red)}
+.slot .meta{display:inline-block;margin-left:8px;font-size:12px;font-weight:700;color:var(--mute);letter-spacing:.04em}
+.slot.mystery{opacity:.9}
+.slot.mystery h3{color:var(--mute)}
+.slot.mystery .q{filter:blur(5px);user-select:none}
+
+.faq details{border-top:1px solid var(--line);padding:14px 0}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{font-weight:700;font-size:18px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px}
+.faq summary::after{content:"+";font-size:24px;line-height:1;color:var(--red);transition:.2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--mute);margin-top:8px;max-width:560px}
+.cta-band{background:var(--ink);color:#fbf3e6;border-radius:28px;padding:clamp(24px,4vw,44px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px}
+.cta-band h3{font-size:clamp(26px,3.4vw,40px);max-width:16ch}
+
+/* ANTEPRIMA */
+.pv{padding-top:10px}
+.pv h1{font-size:clamp(40px,6.4vw,84px);margin:6px 0 14px}
+.pv .by{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.pv .q{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(26px,3.4vw,40px);line-height:1.1;color:#4a3a3d;max-width:22ch;max-width:30ch}
+.pv .story{font-size:18px;color:#4a3a3d;max-width:620px;margin-top:20px}
+.pv-nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:34px}
+.gal-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px;margin-bottom:18px}
+.gal-h h2{font-size:clamp(28px,3.6vw,42px)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tabs button{padding:8px 16px;border-radius:99px;box-shadow:inset 0 0 0 2px var(--ink);font-weight:700;font-size:13px}
+.tabs button[aria-pressed=true]{background:var(--ink);color:#fff}
+.gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.mi{position:relative;aspect-ratio:4/3;border-radius:18px;overflow:hidden;display:block;width:100%;text-align:left;box-shadow:inset 0 0 0 2px var(--ink);transition:.18s}
+.mi:hover{transform:translateY(-4px) rotate(-.6deg)}
+.mi .bg{position:absolute;inset:0}
+.mi.video .play{position:absolute;left:50%;top:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:rgba(26,18,20,.82);display:grid;place-items:center;color:#fff;font-size:20px;padding-left:4px}
+.mi .tag{position:absolute;left:10px;top:10px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:#fff;color:var(--ink);border-radius:99px;padding:3px 10px}
+.mi .tag.team{background:var(--ink);color:var(--cream)}
+.mi .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 12px 10px;background:linear-gradient(transparent,rgba(26,18,20,.78));color:#fff;font-size:13px;font-weight:500}
+.mi .dur{position:absolute;right:10px;top:10px;font-size:12px;font-weight:700;background:rgba(26,18,20,.82);color:#fff;border-radius:8px;padding:2px 8px}
+@media(max-width:700px){.gal{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.upl{background:var(--cream);border-radius:24px;padding:clamp(20px,3vw,30px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;margin-top:36px}
+.upl h3{font-size:26px;margin-bottom:4px}.upl p{font-size:15px;color:#4a3a3d;max-width:480px}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(26,18,20,.92);display:none;place-items:center;padding:22px}
+.lb.on{display:grid}
+.lb-in{width:min(860px,100%)}
+.lb-st{aspect-ratio:16/10;border-radius:20px;position:relative;overflow:hidden}
+.lb-st .play{position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);display:grid;place-items:center;font-size:30px;padding-left:6px}
+.lb-cap{color:#fbf3e6;margin-top:14px;display:flex;justify-content:space-between;gap:14px;align-items:center;font-size:15px}
+.lb-cap button{color:#fff;font-weight:700;box-shadow:inset 0 0 0 2px #fff;border-radius:99px;padding:8px 18px}
+
+/* CANDIDATURA */
+.prog{display:flex;gap:8px;margin:20px 0 34px}
+.prog i{flex:1;height:6px;border-radius:9px;background:var(--line)}.prog i.on{background:var(--red)}
+.cand{padding-top:30px}
+.cand h1{font-size:clamp(38px,5.6vw,68px);margin-bottom:12px;max-width:16ch}
+.fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 26px;max-width:800px}
+.fgrid .full{grid-column:1/-1}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld label{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.fld input,.fld textarea,.fld select{background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:12px 14px;font-size:17px;outline:none}
+.fld input:focus,.fld textarea:focus,.fld select:focus{border-color:var(--red)}
+.fld textarea{min-height:90px;resize:vertical}
+.fld .err{color:var(--red);font-size:13px;display:none}.fld.bad .err{display:block}.fld.bad input,.fld.bad textarea{border-color:var(--red)}
+.check{display:flex;gap:12px;font-size:15px;align-items:flex-start}
+.check input{width:22px;height:22px;accent-color:var(--red);flex:none;margin-top:2px}
+.shake{animation:shake .4s}@keyframes shake{25%{transform:translateX(-7px)}50%{transform:translateX(6px)}75%{transform:translateX(-3px)}}
+.hide{display:none!important}
+@media(max-width:640px){.fgrid{grid-template-columns:minmax(0,1fr)}}
+
+.linkbox{background:var(--card);border-radius:22px;box-shadow:inset 0 0 0 2px var(--ink);padding:22px;max-width:680px;margin:22px 0}
+.msg{background:#dcf8c6;color:#1b2a1b;border-radius:16px 16px 16px 4px;padding:14px 16px;font-size:15.5px;line-height:1.4;margin-bottom:14px;max-width:520px}
+.msg u{color:#0b6b57;word-break:break-all}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.sim{margin-top:26px;padding:14px 16px;border:2px dashed #bfae9f;border-radius:16px;font-size:14px;color:var(--mute);max-width:680px}
+.sim button{font-weight:700;color:var(--red);text-decoration:underline;text-underline-offset:3px}
+
+/* AMICO */
+.friend{background:var(--red);color:#fff;border-radius:0 0 40px 40px;padding:54px 0 70px}
+.friend h1{font-size:clamp(42px,7vw,94px);max-width:13ch;margin-bottom:16px}
+.friend h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+.friend p.sub{font-size:20px;max-width:520px;opacity:.95}
+.from{display:inline-block;background:#fff;color:var(--ink);border-radius:99px;padding:6px 14px;font-size:14px;font-weight:700;margin-bottom:18px}
+.card{background:var(--card);border-radius:26px;box-shadow:inset 0 0 0 2px var(--ink);padding:clamp(20px,3vw,32px);max-width:760px}
+.what{background:var(--cream);border-radius:18px;padding:16px 18px;margin:16px 0;font-family:'Instrument Serif',serif;font-style:italic;font-size:24px;line-height:1.15}
+.choices{display:grid;gap:10px;margin:18px 0}
+.choice{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:16px;box-shadow:inset 0 0 0 2px var(--line);cursor:pointer;transition:.15s}
+.choice:has(input:checked){box-shadow:inset 0 0 0 2px var(--ink);background:#fffaf0}
+.choice input{accent-color:var(--red);width:20px;height:20px;margin-top:2px;flex:none}
+.choice b{display:block;font-size:17px}.choice span{font-size:14px;color:var(--mute)}
+.stamp{display:inline-block;border:4px solid var(--red);color:var(--red);font-weight:800;font-size:clamp(24px,3.4vw,40px);letter-spacing:-.03em;padding:6px 18px;border-radius:12px;transform:rotate(-4deg);margin-bottom:16px;animation:st .45s cubic-bezier(.7,0,.2,1)}
+@keyframes st{from{transform:rotate(-4deg) scale(2);opacity:0}}
+
+/* BIGLIETTO */
+.my{padding-top:34px}
+.my h1{font-size:clamp(36px,5.4vw,64px);margin-bottom:6px}
+.who{display:flex;gap:10px;margin:18px 0 26px;flex-wrap:wrap}
+.who button{padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;box-shadow:inset 0 0 0 2px var(--ink);transition:.15s}
+.who button[aria-pressed=true]{background:var(--ink);color:#fff}
+.tk{display:grid;grid-template-columns:minmax(0,1fr) 190px;background:var(--card);border-radius:24px;box-shadow:inset 0 0 0 2px var(--ink);max-width:760px}
+.tk .l{padding:24px;border-right:2px dashed var(--ink)}
+.tk .l small{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.tk h3{font-size:34px;margin:6px 0 4px}
+.tk .r{display:grid;place-items:center;padding:16px}
+.qr{width:140px;height:140px;background:
+  conic-gradient(var(--ink) 25%,#fff 0 50%,var(--ink) 0 75%,#fff 0) 0 0/28px 28px;border:8px solid #fff;outline:2px solid var(--ink);border-radius:8px;position:relative}
+.qr::before,.qr::after{content:"";position:absolute;width:38px;height:38px;border:6px solid var(--ink);background:#fff;box-shadow:inset 0 0 0 6px #fff,inset 0 0 0 20px var(--ink)}
+.qr::before{left:0;top:0}.qr::after{right:0;top:0}
+@media(max-width:620px){.tk{grid-template-columns:minmax(0,1fr)}.tk .l{border-right:0;border-bottom:2px dashed var(--ink)}}
+.track{max-width:760px;margin-top:6px}
+.tr{display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;padding-bottom:22px;position:relative}
+.tr::before{content:"";position:absolute;left:16px;top:34px;bottom:0;width:2px;background:var(--line)}
+.tr:last-child::before{display:none}
+.tr .dot{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--line);font-weight:800;font-size:14px;color:var(--mute)}
+.tr.done .dot{background:var(--ink);color:#fff}.tr.now .dot{background:var(--red);color:#fff;box-shadow:0 0 0 6px rgba(232,31,50,.2)}
+.tr b{font-size:18px}.tr p{font-size:14px;color:var(--mute)}
+.tr.todo b{color:var(--mute)}
+
+/* PROGETTO */
+.about{padding-top:40px}.about h1{font-size:clamp(40px,6vw,76px);max-width:14ch;margin-bottom:22px}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
+.cols p{color:#4a3a3d;font-size:18px;margin-bottom:14px}
+.press{display:flex;flex-wrap:wrap;gap:12px 30px;color:#a8978f;font-weight:800;font-size:20px;margin-top:30px}
+@media(max-width:700px){.cols{grid-template-columns:minmax(0,1fr)}}
+
+footer{background:var(--ink);color:#bdb1ad;padding:46px 0;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px}
+footer .logo{color:#fff;font-size:22px}
+footer nav{display:flex;gap:18px;flex-wrap:wrap}footer a:hover{color:#fff}
+</style>
+</head>
+<body>
+<div class="note">Proposta 10 – La serata al centro · prototipo cliccabile: prova la candidatura in due tempi (Candida → link → vista dell'amico → il mio biglietto) · testi ed eventi segnaposto</div>
+
+<header>
+  <div class="wrap">
+    <a href="#/" class="logo">pitcha <b>l'amico</b></a>
+    <nav class="menu">
+      <a href="#/" data-nav="home" class="h">Serate</a>
+      <a href="#/candida" data-nav="candida" class="h">Candida un amico</a>
+      <a href="#/progetto" data-nav="progetto" class="h">Il progetto</a>
+      <a href="#/biglietto" data-nav="biglietto">Il mio biglietto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HOME ============ -->
+<div class="page" id="p-home">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="kick">Il format dove si presentano gli amici</p>
+        <h1>Pitcha il tuo amico <em>single.</em></h1>
+        <p class="sub">Una serata, un palco, qualche amico che parla bene di un altro amico. Il resto lo decide la sala.</p>
+        <div class="row"><a class="btn" href="#/serata">Vai alla prossima serata →</a><a class="btn ghost" href="#/candida">Porto un amico sul palco</a></div>
+      </div>
+      <aside class="next">
+        <p class="lab">Prossima serata</p>
+        <h3>Milano · 28 nov</h3>
+        <p class="where">Santeria Toscana 31 · ore 20:30</p>
+        <div class="count" aria-label="Conto alla rovescia" id="count"></div>
+        <ul class="mini">
+          <li><b>Giulia presenta</b>M., 34, cuoco: «carbonara al secondo appuntamento»</li>
+          <li><b>Luca presenta</b>S., 29, architetta: «monta la libreria da sola»</li>
+          <li class="more">+ 4 pitch a sorpresa</li>
+        </ul>
+        <a class="btn" href="#/serata" style="width:100%">Scaletta e biglietti</a>
+      </aside>
+    </div>
+  </section>
+
+  <div class="wrap gates">
+    <a class="gate a" href="#/serata"><div><small>Per i single</small><h3>Vengo in platea</h3></div><p>Scopri chi verrà presentato, scegli la serata e prendi il biglietto.</p><span class="go">Vedi la scaletta →</span></a>
+    <a class="gate b" href="#/candida"><div><small>Per chi ha un amico</small><h3>Porto un amico sul palco</h3></div><p>Due minuti per candidarlo. Poi tocca a lui dire sì.</p><span class="go">Inizia la candidatura →</span></a>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <p class="kick">Come funziona, in una serata vera</p>
+      <h2 class="t">Il 28 novembre, a Milano.</h2>
+      <div class="steps">
+        <div class="step"><i>I.</i><h3>Sei amici salgono sul palco</h3><p>Ognuno ha cinque minuti per presentare un amico single: con ironia, qualche slide e zero pressione.</p></div>
+        <div class="step"><i>II.</i><h3>La sala ascolta e alza la mano</h3><p>Se un pitch ti convince, lo segni. Nessuno vede cosa scegli, tranne noi.</p></div>
+        <div class="step"><i>III.</i><h3>Si va al bar</h3><p>Chi ha alzato la mano incontra l'amico presentato. Chi ha presentato si prende il merito.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:10px">
+    <div class="wrap">
+      <p class="kick">Calendario</p>
+      <h2 class="t">Tutte le date.</h2>
+      <div class="evs" id="evs"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="kick">Dalle serate passate</p>
+      <h2 class="t">Si ride parecchio.</h2>
+      <p class="lead">Qui andranno le foto vere delle serate.</p>
+      <div class="past"><div class="ph">Foto</div><div class="ph">Foto</div><div class="ph">Foto</div><div class="ph">Foto</div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ ANTEPRIMA ============ -->
+<div class="page" id="p-anteprima">
+  <div class="wrap pv">
+    <p class="crumb"><a href="#/">Serate</a> / <a href="#/serata">Milano, 28 novembre</a> / <span id="pv-crumb"></span></p>
+    <div id="pv-head" style="padding:26px 0 30px"></div>
+    <div class="gal-h">
+      <h2>Foto e video</h2>
+      <div class="tabs" id="pv-tabs"></div>
+    </div>
+    <div class="gal" id="pv-gal"></div>
+    <div class="upl">
+      <div><h3>Sei tra i protagonisti?</h3><p>Se hai candidato o sei stato candidato, puoi mandarci foto e video per l'anteprima. Prima di comparire qui, ogni file viene controllato dal team.</p></div>
+      <label class="btn dark" style="cursor:pointer">Carica foto o video<input type="file" id="pv-file" accept="image/*,video/*" multiple hidden></label>
+    </div>
+    <p class="fine hide" id="pv-ok" style="margin-top:10px">Ricevuto, grazie. Il team lo controlla e, se va bene, lo pubblica qui.</p>
+    <div class="pv-nav" id="pv-nav"></div>
+  </div>
+</div>
+<div class="lb" id="lb" role="dialog" aria-modal="true"><div class="lb-in"><div class="lb-st" id="lb-st"></div><div class="lb-cap"><span id="lb-cap"></span><button type="button" id="lb-x">Chiudi ✕</button></div></div></div>
+
+<!-- ============ SERATA ============ -->
+<div class="page" id="p-serata">
+  <div class="wrap">
+    <p class="crumb"><a href="#/">Serate</a> / Milano, 28 novembre</p>
+    <div class="sh">
+      <div class="sh-grid">
+        <div>
+          <p class="kick" style="margin-top:20px">Serata n. 14</p>
+          <h1>Milano, 28 novembre</h1>
+          <p class="when">Santeria Toscana 31 · porte ore 20:00 · si parte alle 20:30</p>
+          <div class="lineup">
+            <h2>La scaletta</h2>
+            <p class="fine">Le anteprime sono anonime e pubblicate con il consenso degli amici presentati.</p>
+            <div class="lu">
+              <div class="slot mystery"><div class="n">4</div><div><p class="by">Pitch a sorpresa</p><h3>3 amici ancora da svelare</h3><p class="q">Li scopri solo la sera stessa, sul palco.</p></div></div>
+            </div>
+          </div>
+        </div>
+        <aside class="ticket">
+          <div class="price"><small>da</small> € 18 <small>/ biglietto</small></div>
+          <div class="bar"><b style="width:90%"></b></div>
+          <p class="fine"><b style="color:var(--red)">Ultimi 12 posti</b> su 120</p>
+          <div class="tt" id="tt"></div>
+          <button class="btn" id="buy" style="width:100%">Paga € <span id="tot">18</span> con Stripe →</button>
+          <p class="buy-msg" id="buymsg">Qui si apre Stripe Checkout. A pagamento riuscito arriva l'email con un QR per ogni biglietto.</p>
+          <p class="fine" style="margin-top:12px">Chi viene presentato sul palco entra con lo stesso biglietto Platea.</p>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <section style="padding-top:30px">
+    <div class="wrap">
+      <p class="kick">Prima di comprare</p>
+      <h2 class="t">Domande su questa serata.</h2>
+      <div class="faq" style="max-width:760px">
+        <details><summary>Devo essere single per venire?</summary><p>In platea sì, è il senso della serata. Sul palco no: chi presenta è l'amico, single o meno.</p></details>
+        <details><summary>Posso venire da solo?</summary><p>Certo, la maggior parte della sala lo fa. Si finisce a parlare con qualcuno in cinque minuti.</p></details>
+        <details><summary>Cosa succede se il mio amico non vuole salire?</summary><p>Non lo mettiamo in scaletta. Ogni candidatura passa dal suo sì, prima di tutto.</p></details>
+        <details><summary>Posso avere un rimborso?</summary><p>Sì, fino a 7 giorni prima della serata, scrivendo a ciao@pitchalamico.example.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:10px">
+    <div class="wrap"><div class="cta-band"><h3>Hai un amico da mettere in scaletta?</h3><a class="btn" href="#/candida">Candidalo →</a></div></div>
+  </section>
+</div>
+
+<!-- ============ CANDIDA ============ -->
+<div class="page" id="p-candida">
+  <div class="wrap cand">
+    <p class="kick">Porto un amico sul palco</p>
+    <div class="prog"><i class="on" id="pg1"></i><i id="pg2"></i><i id="pg3"></i></div>
+
+    <div id="c1">
+      <h1>Parlaci del tuo amico.</h1>
+      <p class="lead">Bastano due minuti. Non verrà pubblicato niente finché lui non avrà detto di sì.</p>
+      <form id="cform" class="fgrid" novalidate>
+        <div class="fld"><label for="c-me">Il tuo nome</label><input id="c-me" required autocomplete="given-name"><span class="err">Come ti chiami?</span></div>
+        <div class="fld"><label for="c-mail">La tua email</label><input id="c-mail" type="email" required autocomplete="email"><span class="err">Serve un'email valida.</span></div>
+        <div class="fld"><label for="c-fr">Il nome del tuo amico</label><input id="c-fr" required><span class="err">Come si chiama?</span></div>
+        <div class="fld"><label for="c-city">La sua città</label><input id="c-city" required><span class="err">Dove abita?</span></div>
+        <div class="fld full"><label for="c-pitch">Due righe: perché è fantastico?</label><textarea id="c-pitch" required maxlength="220" placeholder="Es. Cucina la carbonara migliore di Milano."></textarea><span class="err">Raccontaci qualcosa di lui.</span></div>
+        <div class="fld"><label for="c-ev">Serata preferita</label><select id="c-ev"><option>Milano · 28 novembre</option><option>Roma · 5 dicembre</option><option>Bologna · 16 gennaio</option><option>La prima disponibile</option></select></div>
+        <div class="fld"><label for="c-tel">Il suo contatto (WhatsApp o email)</label><input id="c-tel" required><span class="err">Serve per mandargli il link.</span></div>
+        <label class="check full"><input type="checkbox" id="c-ok" required> <span>Ho letto l'informativa privacy e acconsento al trattamento dei miei dati per questa candidatura.</span></label>
+        <div class="full row"><button class="btn" type="submit">Genera il link per il mio amico →</button></div>
+      </form>
+    </div>
+
+    <div id="c2" class="hide">
+      <h1>Ora tocca a <span style="color:var(--red)" data-fr>lui</span>.</h1>
+      <p class="lead">Mandagli questo messaggio. La candidatura arriva al team solo quando avrà detto sì.</p>
+      <div class="linkbox">
+        <div class="msg" id="wmsg"></div>
+        <div class="row"><button class="btn" id="wa">Apri WhatsApp</button><button class="btn ghost" id="copy">Copia il link</button></div>
+        <p class="fine" id="copied" style="margin-top:10px"></p>
+      </div>
+      <p class="fine" style="max-width:560px">Non risponde? Dopo 3 giorni gli mandiamo un promemoria, poi la candidatura scade da sola.</p>
+      <div class="sim">Prototipo: <button id="simfriend">simula l'apertura del link da parte dell'amico →</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ AMICO ============ -->
+<div class="page" id="p-amico">
+  <div class="friend">
+    <div class="wrap">
+      <span class="from"><span data-me>Giulia</span> ti ha scritto</span>
+      <h1>Qualcuno pensa che tu sia <em>fantastico.</em></h1>
+      <p class="sub">Ciao <b data-fr>Marco</b>: <span data-me>Giulia</span> vorrebbe presentarti a una serata di Pitcha l'Amico. Prima di tutto, decidi tu.</p>
+    </div>
+  </div>
+  <div class="wrap" style="padding:40px 22px 80px">
+    <div id="f1" class="card">
+      <p class="kick">Cosa ha scritto di te</p>
+      <div class="what" id="whatsaid">«…»</div>
+      <p class="fine">Puoi correggerlo o aggiungere qualcosa, se vuoi:</p>
+      <div class="fld" style="margin:8px 0 6px"><textarea id="f-edit" aria-label="Correggi la descrizione"></textarea></div>
+      <p class="kick" style="margin-top:22px">Come funziona (30 secondi)</p>
+      <p style="color:var(--mute)">Sul palco, <span data-me>Giulia</span> ti presenta per cinque minuti a una sala di single. Se qualcuno alza la mano, vi fate presentare al bar. Niente di obbligatorio, mai.</p>
+      <p class="kick" style="margin-top:22px">Cosa ci dici?</p>
+      <div class="choices">
+        <label class="choice"><input type="radio" name="fc" value="si" checked><div><b>Sì, mi va. E mostrate pure l'anteprima.</b><span>Comparirà in scaletta come «<span data-initial>M.</span>, età, professione».</span></div></label>
+        <label class="choice"><input type="radio" name="fc" value="sorpresa"><div><b>Sì, ma in scaletta resto a sorpresa.</b><span>Nessuna anteprima: ti presentano solo la sera.</span></div></label>
+        <label class="choice"><input type="radio" name="fc" value="no"><div><b>No, grazie.</b><span>Cancelliamo tutto: i dati non vengono conservati.</span></div></label>
+      </div>
+      <label class="check" style="margin-bottom:18px"><input type="checkbox" id="f-priv"> <span>Ho letto l'informativa privacy e acconsento al trattamento dei miei dati.</span></label>
+      <button class="btn" id="f-send">Conferma la mia risposta →</button>
+    </div>
+    <div id="f2" class="card hide">
+      <div class="stamp" id="f-stamp">CONFERMATO</div>
+      <h2 class="t" style="font-size:clamp(28px,3.6vw,42px)" id="f-title"></h2>
+      <p style="color:var(--mute);margin-bottom:20px;max-width:520px" id="f-body"></p>
+      <div class="row"><a class="btn" href="#/biglietto">Guarda lo stato (vista di <span data-me>Giulia</span>) →</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ IL MIO BIGLIETTO ============ -->
+<div class="page" id="p-biglietto">
+  <div class="wrap my">
+    <p class="kick">Il mio spazio</p>
+    <h1>Ciao, ecco a che punto siamo.</h1>
+    <p class="fine">Niente account: ci arrivi dal link nell'email. Qui sotto puoi provare le due viste.</p>
+    <div class="who" role="group" aria-label="Vista">
+      <button aria-pressed="true" data-v="ticket">Vista: ho un biglietto</button>
+      <button aria-pressed="false" data-v="cand">Vista: ho candidato un amico</button>
+    </div>
+    <div id="v-ticket">
+      <div class="tk">
+        <div class="l"><small>Platea · 1 biglietto</small><h3>Milano, 28 nov</h3><p class="fine">Santeria Toscana 31 · porte 20:00 · inizio 20:30</p><p class="fine" style="margin-top:14px">Mostra il QR all'ingresso. Per aggiungere un amico acquista un altro biglietto.</p><div class="row" style="margin-top:14px"><a class="btn sm ghost" href="#/serata">La scaletta</a><button class="btn sm ghost" type="button" onclick="alert('Prototipo: qui si scarica il PDF del biglietto')">Scarica PDF</button></div></div>
+        <div class="r"><div class="qr" role="img" aria-label="QR code segnaposto"></div></div>
+      </div>
+    </div>
+    <div id="v-cand" class="hide">
+      <div class="track" id="track"></div>
+      <div class="row" style="margin-top:6px"><a class="btn ghost sm" href="#/candida">Candida un altro amico</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PROGETTO ============ -->
+<div class="page" id="p-progetto">
+  <div class="wrap about">
+    <p class="kick">Il progetto</p>
+    <h1>Siamo amici prima di tutto.</h1>
+    <div class="cols">
+      <div><p>Pitcha l'Amico nasce da un'idea semplice: chi ti conosce meglio ti presenta meglio. Così abbiamo messo gli amici su un palco, a parlare bene dei loro amici.</p><p>Testo segnaposto: qui andrà la storia vera del progetto, la squadra e i valori.</p></div>
+      <div><p>Le serate sono aperte a tutte le persone e a tutti gli orientamenti, e ogni candidatura passa sempre dal consenso di chi viene presentato.</p><p>Per collaborazioni, locali e stampa: <b>ciao@pitchalamico.example</b></p></div>
+    </div>
+    <p class="kick" style="margin-top:46px">Ne hanno parlato</p>
+    <div class="press"><span>Testata</span><span>Testata</span><span>Testata</span><span>Testata</span></div>
+  </div>
+  <section><div class="wrap"><div class="cta-band"><h3>Vieni a vedere com'è.</h3><a class="btn" href="#/serata">Prossima serata →</a></div></div></section>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><div class="logo">pitcha <b style="color:var(--coral)">l'amico</b></div><p style="margin-top:6px">Testi ed eventi segnaposto.</p></div>
+    <nav><a href="#/">Serate</a><a href="#/candida">Candida un amico</a><a href="#/progetto">Il progetto</a><a href="#/biglietto">Il mio biglietto</a><a href="#/">Privacy</a><a href="#/">Cookie</a><a href="#/">Termini di vendita</a></nav>
+  </div>
+</footer>
+
+<script>
+const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const S = { me: 'Giulia', fr: 'Marco', pitch: 'Cucina la carbonara migliore di Milano.', ev: 'Milano · 28 novembre', step: 0, answer: null };
+// step: 0 nessuna candidatura · 1 inviata all'amico · 2 confermata · 3 rifiutata
+
+/* ---------- router ---------- */
+const routes = { '': 'home', serata: 'serata', anteprima: 'anteprima', candida: 'candida', amico: 'amico', biglietto: 'biglietto', progetto: 'progetto' };
+function route() {
+  const key = (location.hash.replace(/^#\/?/, '').split('/')[0]) || '';
+  const id = routes[key] ?? 'home';
+  $$('.page').forEach(p => p.classList.toggle('on', p.id === 'p-' + id));
+  $$('[data-nav]').forEach(a => a.classList.toggle('on', a.dataset.nav === id));
+  if (id === 'biglietto') drawTrack();
+  if (id === 'anteprima') drawPreview(location.hash.split('/')[2]);
+  scrollTo(0, 0);
+}
+
+/* ---------- scaletta + anteprima serata ---------- */
+// by: team = precaricato dall'admin · presenter = mandato da chi presenta · friend = mandato dall'amico presentato
+const GR = ['#f6c6a8,#e8795f', '#fcefb4,#f0b84d', '#cfe3d4,#6aa584', '#d9cdf0,#8470c4', '#f3b8c4,#d85a7a', '#bcd8ec,#4f86b8'];
+const SL = [
+  { id: 1, me: 'Giulia', who: 'M., 34 anni, cuoco', q: 'Ti cucina la carbonara al secondo appuntamento.',
+    story: 'Lavora in un ristorante di Porta Romana e a casa non spegne mai i fornelli. Giulia giura che la sua carbonara ha fatto cambiare idea a più di un ospite scettico. Sul palco, dice, farà finta di essere timido.',
+    media: [['foto', 'team', 'Foto ufficiale del team'], ['video', 'presenter', 'La carbonara in diretta', '0:42'], ['foto', 'presenter', 'In cucina, sabato scorso'], ['foto', 'friend', 'Con il grembiule di famiglia'], ['video', 'team', 'Il saluto a chi verrà', '0:18'], ['foto', 'friend', 'Pasta fatta a mano']] },
+  { id: 2, me: 'Luca', who: 'S., 29 anni, architetta', q: 'Sa montare la libreria dell\'IKEA da sola.',
+    story: 'Progetta case di giorno e smonta mobili di notte, solo per rimontarli meglio. Luca dice che è l\'unica persona che legge le istruzioni e poi le corregge.',
+    media: [['foto', 'team', 'Foto ufficiale del team'], ['foto', 'presenter', 'La libreria, versione finale'], ['video', 'friend', 'Mi presento da sola', '0:31'], ['foto', 'friend', 'Cantiere, con casco d\'ordinanza']] },
+  { id: 3, me: 'Anna', who: 'D., 38 anni, ingegnere', q: 'Ha un cane che è meglio di tutti noi.',
+    story: 'Ingegnere del suono, appassionato di trekking e padrone di un beagle che conosce più gente di lui. Anna avverte: il cane è un requisito non negoziabile.',
+    media: [['foto', 'team', 'Foto ufficiale del team'], ['video', 'team', 'Il cane saluta la platea', '0:12'], ['foto', 'presenter', 'Trekking in Val Masino'], ['foto', 'friend', 'Il beagle in questione'], ['video', 'presenter', 'D. e il cane, un giorno qualsiasi', '0:55']] },
+];
+const SRC = { team: 'Dal team', presenter: 'Da chi presenta', friend: 'Dall\'amico' };
+$('.lu').insertAdjacentHTML('afterbegin', SL.map(s => `<a class="slot" href="#/anteprima/${s.id}"><div class="n">${s.id}</div><div><p class="by">${s.me} presenta</p><h3>${esc(s.who)}</h3><p class="q">«${esc(s.q)}»</p><span class="go">Guarda l'anteprima →</span><span class="meta">${s.media.filter(m => m[0] === 'foto').length} foto · ${s.media.filter(m => m[0] === 'video').length} video</span></div></a>`).join(''));
+
+let pvFilter = 'all', pvCur = null;
+const grad = i => `linear-gradient(135deg,${GR[i % GR.length].split(',')[0]},${GR[i % GR.length].split(',')[1]})`;
+function drawPreview(id) {
+  const s = SL.find(x => x.id == id) || SL[0]; pvCur = s; pvFilter = 'all';
+  $('#pv-crumb').textContent = s.who;
+  $('#pv-head').innerHTML = `<p class="by">${esc(s.me)} presenta</p><h1>${esc(s.who)}</h1><p class="q">«${esc(s.q)}»</p><p class="story">${esc(s.story)}</p>`;
+  const i = SL.indexOf(s), p = SL[i - 1], n = SL[i + 1];
+  $('#pv-nav').innerHTML = (p ? `<a class="btn ghost sm" href="#/anteprima/${p.id}">← ${esc(p.who)}</a>` : '<span></span>') + `<a class="btn sm" href="#/serata">Torna alla scaletta</a>` + (n ? `<a class="btn ghost sm" href="#/anteprima/${n.id}">${esc(n.who)} →</a>` : '<span></span>');
+  drawGal();
+}
+function drawGal() {
+  const s = pvCur, F = [['all', 'Tutti'], ['foto', 'Foto'], ['video', 'Video']];
+  $('#pv-tabs').innerHTML = F.map(f => `<button type="button" data-f="${f[0]}" aria-pressed="${pvFilter === f[0]}">${f[1]}</button>`).join('');
+  $('#pv-gal').innerHTML = s.media.map((m, i) => ({ m, i })).filter(o => pvFilter === 'all' || o.m[0] === pvFilter).map(o => {
+    const [t, by, cap, dur] = o.m;
+    return `<button type="button" class="mi ${t}" data-i="${o.i}"><span class="bg" style="background:${grad(o.i + s.id)}"></span><span class="tag ${by}">${SRC[by]}</span>${t === 'video' ? `<span class="play">▶</span><span class="dur">${dur}</span>` : ''}<span class="cap">${esc(cap)}</span></button>`;
+  }).join('');
+}
+$('#pv-tabs').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if (b) { pvFilter = b.dataset.f; drawGal(); } });
+$('#pv-gal').addEventListener('click', e => {
+  const b = e.target.closest('[data-i]'); if (!b) return;
+  const i = +b.dataset.i, [t, by, cap, dur] = pvCur.media[i];
+  $('#lb-st').style.background = grad(i + pvCur.id);
+  $('#lb-st').innerHTML = t === 'video' ? '<span class="play">▶</span>' : '';
+  $('#lb-cap').textContent = `${cap} · ${SRC[by]}${dur ? ' · ' + dur : ''}`;
+  $('#lb').classList.add('on');
+});
+const closeLb = () => $('#lb').classList.remove('on');
+$('#lb-x').onclick = closeLb;
+$('#lb').addEventListener('click', e => { if (e.target.id === 'lb') closeLb(); });
+addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+$('#pv-file').onchange = e => { if (e.target.files.length) $('#pv-ok').classList.remove('hide'); e.target.value = ''; };
+addEventListener('hashchange', route);
+
+/* ---------- home ---------- */
+const EV = [
+  ['28', 'Nov', 'Milano', 'Santeria Toscana 31 · ore 20:30', 'Ultimi 12 posti', 1],
+  ['05', 'Dic', 'Roma', 'Monk Club · ore 21:00', '46 posti liberi', 0],
+  ['12', 'Dic', 'Torino', 'Off Topic · ore 20:30', 'Esaurito', 0],
+  ['16', 'Gen', 'Bologna', 'Locomotiv Club · ore 21:00', '80 posti liberi', 0],
+];
+$('#evs').innerHTML = EV.map(e => `<a class="ev" href="#/serata"><div class="d"><b>${e[0]}</b><span>${e[1]}</span></div><div><h3>${e[2]}</h3><p>${e[3]}</p><span class="pill${e[5] ? ' hot' : ''}">${e[4]}</span></div><span class="btn sm${e[4] === 'Esaurito' ? ' ghost' : ''}">${e[4] === 'Esaurito' ? 'Lista d’attesa' : 'Scaletta →'}</span></a>`).join('');
+const target = new Date(); target.setDate(target.getDate() + 10); target.setHours(20, 30, 0, 0);
+function tick() {
+  const d = Math.max(0, target - Date.now()), v = [Math.floor(d / 864e5), Math.floor(d / 36e5) % 24, Math.floor(d / 6e4) % 60, Math.floor(d / 1e3) % 60];
+  $('#count').innerHTML = ['giorni', 'ore', 'min', 'sec'].map((l, i) => `<div><b>${String(v[i]).padStart(2, '0')}</b><span>${l}</span></div>`).join('');
+}
+tick(); setInterval(tick, 1000);
+
+/* ---------- serata: biglietti ---------- */
+// tipologie segnaposto: da rinominare / ripezzare
+const TT = [
+  { n: 'Platea', d: 'Ingresso standard', p: 18 },
+  { n: 'Platea + drink', d: 'Ingresso con un drink incluso', p: 24 },
+  { n: 'Coppia', d: '2 ingressi con un drink ciascuno', p: 44 },
+  { n: 'Tavolo amici', d: '4 ingressi, posti riservati vicino al palco', p: 80 },
+];
+const qs = TT.map((t, i) => i ? 0 : 1);
+function drawTT() {
+  $('#tt').innerHTML = TT.map((t, i) => `<div class="tt-r${qs[i] ? ' has' : ''}"><div><b>${t.n}</b><span>${t.d}</span></div><div class="tt-c"><button type="button" data-i="${i}" data-d="-1" aria-label="Meno ${t.n}">−</button><output>${qs[i]}</output><button type="button" data-i="${i}" data-d="1" aria-label="Più ${t.n}">+</button></div><span class="pr">€ ${t.p}</span></div>`).join('');
+  const tot = qs.reduce((a, q, i) => a + q * TT[i].p, 0);
+  $('#tot').textContent = tot;
+  $('#buy').disabled = !tot;
+}
+$('#tt').addEventListener('click', e => {
+  const b = e.target.closest('[data-i]'); if (!b) return;
+  qs[b.dataset.i] = Math.max(0, Math.min(8, qs[b.dataset.i] + +b.dataset.d)); drawTT();
+});
+drawTT();
+$('#buy').onclick = () => $('#buymsg').classList.add('on');
+
+/* ---------- candidatura ---------- */
+function fieldOf(el) { return el.closest('.fld,.check'); }
+function shake(el) { const f = fieldOf(el); f.classList.remove('shake'); void f.offsetWidth; f.classList.add('shake'); }
+$('#cform').addEventListener('submit', e => {
+  e.preventDefault();
+  let first = null;
+  $$('[required]', e.target).forEach(i => {
+    const ok = i.type === 'checkbox' ? i.checked : i.checkValidity() && i.value.trim();
+    fieldOf(i).classList.toggle('bad', !ok);
+    if (!ok && !first) first = i;
+  });
+  if (first) { shake(first); first.focus(); return; }
+  S.me = $('#c-me').value.trim(); S.fr = $('#c-fr').value.trim(); S.pitch = $('#c-pitch').value.trim(); S.ev = $('#c-ev').value; S.step = 1;
+  fillNames();
+  $('#c1').classList.add('hide'); $('#c2').classList.remove('hide');
+  $('#pg2').classList.add('on'); scrollTo(0, 0);
+});
+const LINK = 'pitchalamico.example/amico/x7k2q9';
+function fillNames() {
+  $$('[data-me]').forEach(e => e.textContent = S.me);
+  $$('[data-fr]').forEach(e => e.textContent = S.fr);
+  $$('[data-initial]').forEach(e => e.textContent = (S.fr[0] || 'M').toUpperCase() + '.');
+  $('#wmsg').innerHTML = `Ciao ${esc(S.fr)}! Ti ho candidato a Pitcha l'Amico, un format dove gli amici si presentano sul palco. Prima di tutto decidi tu: guarda qui 👉 <u>${LINK}</u>`;
+  $('#whatsaid').textContent = '«' + S.pitch + '»';
+  $('#f-edit').value = S.pitch;
+}
+const waText = () => `Ciao ${S.fr}! Ti ho candidato a Pitcha l'Amico: prima di tutto decidi tu. https://${LINK}`;
+$('#wa').onclick = () => open('https://wa.me/?text=' + encodeURIComponent(waText()), '_blank', 'noopener');
+$('#copy').onclick = async () => {
+  try { await navigator.clipboard.writeText('https://' + LINK); $('#copied').textContent = 'Link copiato.'; } catch { $('#copied').textContent = 'Copia a mano: ' + LINK; }
+};
+$('#simfriend').onclick = () => { location.hash = '#/amico'; };
+
+/* ---------- amico ---------- */
+$('#f-send').onclick = () => {
+  const ans = $('input[name=fc]:checked').value;
+  if (ans !== 'no' && !$('#f-priv').checked) { shake($('#f-priv')); return; }
+  S.answer = ans; S.pitch = $('#f-edit').value.trim() || S.pitch; S.step = ans === 'no' ? 3 : 2;
+  $('#f1').classList.add('hide'); $('#f2').classList.remove('hide');
+  const st = $('#f-stamp'), t = $('#f-title'), b = $('#f-body');
+  if (ans === 'no') { st.textContent = 'NESSUN PROBLEMA'; t.textContent = 'Fatto: abbiamo cancellato tutto.'; b.textContent = `${S.me} verrà avvisata che non ti va. Nessun dato viene conservato.`; }
+  else { st.textContent = 'CONFERMATO'; t.textContent = `Grazie ${S.fr}, sei in lista.`; b.textContent = `Il team ti assegnerà a una serata e ${S.me} riceverà la conferma. Ti scriviamo noi, ${ans === 'sorpresa' ? 'e in scaletta resterai a sorpresa.' : 'e la tua anteprima comparirà in scaletta solo dopo la nostra approvazione.'}`; }
+  scrollTo(0, 0);
+};
+
+/* ---------- il mio biglietto ---------- */
+$$('.who button').forEach(b => b.onclick = () => {
+  $$('.who button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  $('#v-ticket').classList.toggle('hide', b.dataset.v !== 'ticket');
+  $('#v-cand').classList.toggle('hide', b.dataset.v !== 'cand');
+  if (b.dataset.v === 'cand') drawTrack();
+});
+function drawTrack() {
+  const s = S.step;
+  const rows = s === 3
+    ? [['Candidatura inviata', `${S.fr} ha ricevuto il tuo messaggio.`, 'done'], [`${S.fr} ha scelto di non partecipare`, 'Nessun problema: i dati sono stati cancellati.', 'now']]
+    : [
+      ['Candidatura inviata', s ? `${S.fr} ha ricevuto il tuo messaggio.` : 'Non hai ancora candidato nessuno.', s ? 'done' : 'now'],
+      [`In attesa del sì di ${S.fr}`, s === 1 ? 'Gli abbiamo scritto: ti avvisiamo appena risponde.' : 'Ha detto di sì.', s === 1 ? 'now' : s ? 'done' : 'todo'],
+      ['Confermata dal team', 'Controlliamo la candidatura e scegliamo la serata.', s === 2 ? 'now' : 'todo'],
+      [`In scaletta · ${S.ev}`, 'L’anteprima compare sulla pagina della serata.', 'todo'],
+    ];
+  $('#track').innerHTML = rows.map((r, i) => `<div class="tr ${r[2]}"><span class="dot">${r[2] === 'done' ? '✓' : i + 1}</span><div><b>${esc(r[0])}</b><p>${esc(r[1])}</p></div></div>`).join('');
+}
+
+fillNames();
+route();
+</script>
+</body>
+</html>

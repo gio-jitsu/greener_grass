@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pitcha l'Amico – Proposta grafica homepage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coral:#FF5A5F; --red:#E81F32; --cream:#FCEFB4; --paper:#FFF8EA; --ink:#1B1212; --amber:#F99C00;
+  --r:22px;
+}
+*{box-sizing:border-box;margin:0}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;overflow-x:hidden}
+h1,h2,h3,.disp{font-family:'Lilita One',sans-serif;font-weight:400;letter-spacing:.01em;text-transform:uppercase;line-height:1.02}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.note{background:var(--ink);color:#fff;font-size:13px;text-align:center;padding:8px 16px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:2px solid var(--ink)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:inline-flex;flex-direction:column;transform:rotate(-2deg)}
+.logo b{font-family:'Lilita One';font-weight:400;font-size:17px;padding:2px 10px;line-height:1.1;text-transform:uppercase}
+.logo b:first-child{background:var(--cream);color:var(--red);border-radius:8px 8px 0 0}
+.logo b:last-child{background:var(--red);color:var(--cream);border-radius:0 0 8px 8px}
+.menu{display:flex;gap:26px;font-weight:700;font-size:15px;align-items:center}
+.menu a:hover{color:var(--red)}
+.btn{display:inline-block;font-family:'Lilita One';text-transform:uppercase;letter-spacing:.02em;font-size:17px;padding:13px 26px;border-radius:999px;border:2px solid var(--ink);background:var(--red);color:var(--cream);box-shadow:4px 4px 0 var(--ink);transition:.15s}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn.alt{background:var(--cream);color:var(--red)}
+.btn.sm{font-size:14px;padding:9px 18px;box-shadow:3px 3px 0 var(--ink)}
+
+/* hero */
+.hero{background:var(--coral);border-bottom:2px solid var(--ink);padding:72px 0 88px;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(46px,7.4vw,92px);color:var(--cream);text-shadow:4px 4px 0 var(--red)}
+.hero p{font-size:19px;margin:22px 0 32px;max-width:480px;color:#fff;font-weight:500}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+.stage{position:relative;height:380px}
+.card{position:absolute;border:2px solid var(--ink);border-radius:var(--r);box-shadow:6px 6px 0 var(--ink);padding:22px}
+.c1{background:var(--cream);width:78%;left:0;top:10px;transform:rotate(-4deg)}
+.c1 small{font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+.c1 .disp{font-size:32px;color:var(--red);margin:6px 0 8px}
+.c2{background:var(--red);color:var(--cream);width:62%;right:0;bottom:30px;transform:rotate(3deg)}
+.c2 .disp{font-size:56px}
+.c3{background:#fff;width:46%;left:8%;bottom:0;transform:rotate(-1.5deg);padding:14px 18px;font-weight:700}
+.sticker{position:absolute;right:6%;top:0;width:96px;height:96px;border-radius:50%;background:var(--amber);border:2px solid var(--ink);display:grid;place-items:center;text-align:center;font-family:'Lilita One';text-transform:uppercase;line-height:1;transform:rotate(12deg);font-size:15px}
+
+/* marquee */
+.strip{background:var(--ink);color:var(--cream);overflow:hidden;white-space:nowrap;padding:14px 0;font-family:'Lilita One';text-transform:uppercase;font-size:22px}
+.strip span{display:inline-block;padding-right:40px;animation:m 22s linear infinite}
+@keyframes m{to{transform:translateX(-100%)}}
+
+section{padding:84px 0}
+.eyebrow{font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:var(--red);margin-bottom:10px}
+h2{font-size:clamp(34px,5vw,56px);color:var(--ink);margin-bottom:14px}
+.lead{font-size:18px;max-width:620px;margin-bottom:40px}
+
+/* events */
+.ev{display:grid;grid-template-columns:90px 1fr auto;gap:22px;align-items:center;background:#fff;border:2px solid var(--ink);border-radius:var(--r);padding:18px 22px;margin-bottom:16px;box-shadow:5px 5px 0 var(--ink)}
+.date{background:var(--cream);border:2px solid var(--ink);border-radius:16px;text-align:center;padding:8px 0}
+.date b{display:block;font-family:'Lilita One';font-weight:400;font-size:34px;color:var(--red);line-height:1}
+.date span{font-size:12px;font-weight:700;text-transform:uppercase}
+.ev h3{font-size:26px}
+.ev p{font-size:14px;opacity:.75}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:99px;background:var(--amber);border:1.5px solid var(--ink);margin-bottom:6px}
+.tag.sold{background:#ddd}
+
+/* steps */
+.steps{background:var(--cream);border-block:2px solid var(--ink)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step{background:#fff;border:2px solid var(--ink);border-radius:var(--r);padding:28px;box-shadow:5px 5px 0 var(--ink)}
+.step .n{width:54px;height:54px;border-radius:50%;background:var(--red);color:var(--cream);display:grid;place-items:center;font-family:'Lilita One';font-size:26px;border:2px solid var(--ink);margin-bottom:16px}
+.step h3{font-size:26px;margin-bottom:8px}
+.step:nth-child(2){transform:rotate(1deg)} .step:nth-child(1){transform:rotate(-1deg)} .step:nth-child(3){transform:rotate(-.6deg)}
+
+/* for whom */
+.who{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pill{border:2px solid var(--ink);border-radius:var(--r);padding:22px;font-weight:500}
+.pill b{display:block;font-family:'Lilita One';font-weight:400;font-size:24px;text-transform:uppercase;margin-bottom:6px}
+.pill:nth-child(1){background:var(--coral);color:#fff}
+.pill:nth-child(2){background:var(--cream)}
+.pill:nth-child(3){background:#fff}
+
+/* apply */
+.apply{background:var(--red);color:var(--cream);border-block:2px solid var(--ink)}
+.apply .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.apply h2{color:var(--cream)}
+.apply .eyebrow{color:var(--cream);opacity:.85}
+form{background:var(--paper);color:var(--ink);border:2px solid var(--ink);border-radius:var(--r);padding:26px;box-shadow:6px 6px 0 var(--ink);display:grid;gap:14px}
+label{font-size:13px;font-weight:700;display:grid;gap:5px}
+input,textarea{font:inherit;padding:11px 14px;border:2px solid var(--ink);border-radius:12px;background:#fff}
+textarea{min-height:84px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.check{font-weight:500;font-size:12px;display:flex;gap:8px;align-items:flex-start}
+
+/* press */
+.press{display:flex;flex-wrap:wrap;gap:14px 38px;align-items:center;font-family:'Lilita One';font-size:24px;text-transform:uppercase;opacity:.6}
+
+/* faq */
+details{background:#fff;border:2px solid var(--ink);border-radius:18px;margin-bottom:12px;padding:16px 22px}
+summary{cursor:pointer;font-weight:700;font-size:17px;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"+";font-family:'Lilita One';font-size:24px;color:var(--red)}
+details[open] summary::after{content:"–"}
+details p{margin-top:10px}
+
+footer{background:var(--ink);color:var(--cream);padding:46px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer a{opacity:.8;margin-right:18px}
+
+/* palette */
+.spec{background:#fff;border-top:2px solid var(--ink)}
+.sw{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 30px}
+.sw div{width:120px;border:2px solid var(--ink);border-radius:16px;overflow:hidden;font-size:12px;font-weight:700}
+.sw i{display:block;height:62px}
+.sw span{display:block;padding:6px 10px}
+.sample{display:flex;gap:30px;flex-wrap:wrap;align-items:baseline}
+
+@media(max-width:860px){
+  .menu a:not(.btn){display:none}
+  .hero .wrap,.apply .wrap{grid-template-columns:1fr}
+  .stage{height:330px}
+  .grid3,.who{grid-template-columns:1fr}
+  .ev{grid-template-columns:70px 1fr}
+  .ev .btn{grid-column:1/-1;text-align:center}
+  .two{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="note">Mockup di proposta grafica – testi ed eventi sono segnaposto</div>
+
+<nav><div class="wrap">
+  <a class="logo" href="#"><b>Pitcha</b><b>l'Amico</b></a>
+  <div class="menu">
+    <a href="#format">Format</a><a href="#eventi">Eventi</a><a href="#candidati">Candidati</a><a href="#faq">FAQ</a>
+    <a class="btn sm" href="#eventi">Biglietti</a>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <h1>Pitcha il tuo amico single.</h1>
+    <p>Cinque minuti sul palco, un amico che parla bene di te (o tu di lui) e una sala piena di persone da conoscere. Dal vivo, senza app.</p>
+    <div class="ctas"><a class="btn alt" href="#eventi">Scopri gli eventi</a><a class="btn" href="#candidati">Presenta un amico</a></div>
+  </div>
+  <div class="stage" aria-hidden="true">
+    <div class="sticker">Dal<br>vivo!</div>
+    <div class="card c1"><small>Il pitch</small><div class="disp">"È il migliore a fare la carbonara."</div><span>— Giulia, sul palco per Marco</span></div>
+    <div class="card c2"><div class="disp">5 min</div>per convincere la sala</div>
+    <div class="card c3">25–40 anni · tutti benvenuti</div>
+  </div>
+</div></header>
+
+<div class="strip"><span>Pitcha il tuo amico ★ Conosci persone vere ★ Serate dal vivo ★ Pitcha il tuo amico ★ Conosci persone vere ★ Serate dal vivo ★ Pitcha il tuo amico ★ Conosci persone vere ★ Serate dal vivo ★</span></div>
+
+<section id="eventi"><div class="wrap">
+  <div class="eyebrow">Prossime date</div>
+  <h2>Trova la tua serata</h2>
+  <p class="lead">Scegli città e data, acquista il biglietto in pochi click e ricevi il QR code via email.</p>
+  <div class="ev"><div class="date"><b>21</b><span>Nov</span></div><div><span class="tag">Ultimi posti</span><h3>Milano</h3><p>Venerdì · ore 20:30 · Locale da definire</p></div><a class="btn sm" href="#">Acquista</a></div>
+  <div class="ev"><div class="date"><b>05</b><span>Dic</span></div><div><span class="tag" style="background:var(--cream)">Disponibile</span><h3>Torino</h3><p>Venerdì · ore 20:30 · Locale da definire</p></div><a class="btn sm" href="#">Acquista</a></div>
+  <div class="ev"><div class="date"><b>18</b><span>Gen</span></div><div><span class="tag sold">Sold out</span><h3>Roma</h3><p>Sabato · ore 21:00 · Lista d'attesa aperta</p></div><a class="btn sm alt" href="#">Lista d'attesa</a></div>
+</div></section>
+
+<section class="steps" id="format"><div class="wrap">
+  <div class="eyebrow">Il format</div>
+  <h2>Come funziona</h2>
+  <p class="lead">Tre passi, zero imbarazzo. Il resto lo fa la serata.</p>
+  <div class="grid3">
+    <div class="step"><div class="n">1</div><h3>Scegli l'evento</h3><p>Trova la data nella tua città e prendi il biglietto. Più biglietti in un'unica transazione, se vieni in compagnia.</p></div>
+    <div class="step"><div class="n">2</div><h3>Prepara il pitch</h3><p>Pitcha un amico o fatti pitchare. Cinque minuti, anche con un PDF di slide divertenti.</p></div>
+    <div class="step"><div class="n">3</div><h3>Conosci persone</h3><p>Dopo i pitch si chiacchiera, si brinda e le connessioni continuano anche dopo la serata.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">Per chi è</div>
+  <h2>Un posto dove stare bene</h2>
+  <p class="lead">Un ambiente informale, pensato per tutte e tutti.</p>
+  <div class="who">
+    <div class="pill"><b>Single 25–40</b>Vuoi conoscere gente nuova senza passare dalle app.</div>
+    <div class="pill"><b>Amici di single</b>Hai un amico fantastico e vuoi raccontarlo al mondo.</div>
+    <div class="pill"><b>Inclusivo</b>Spazio sicuro per introversi e per la comunità LGBTQ+.</div>
+  </div>
+</div></section>
+
+<section class="apply" id="candidati"><div class="wrap">
+  <div>
+    <div class="eyebrow">Candidature</div>
+    <h2>Hai un amico single da presentare?</h2>
+    <p class="lead" style="margin:0">Compila il modulo: ti ricontattiamo per fissare la data e preparare il pitch insieme.</p>
+  </div>
+  <form onsubmit="return false">
+    <div class="two"><label>Il tuo nome<input placeholder="Giulia"></label><label>Email<input placeholder="giulia@email.it"></label></div>
+    <label>Nome del tuo amico<input placeholder="Marco"></label>
+    <label>Perché dovremmo conoscerlo?<textarea placeholder="Racconta in poche righe…"></textarea></label>
+    <label class="check"><input type="checkbox" style="margin-top:2px"> Il mio amico è d'accordo e accetto l'informativa privacy.</label>
+    <button class="btn" style="cursor:pointer;font-size:18px">Invia candidatura</button>
+  </form>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">Dicono di noi</div>
+  <div class="press"><span>la Repubblica</span><span>Il Post</span><span>Famiglia Cristiana</span><span>MilanoToday</span><span>Radio Deejay</span></div>
+</div></section>
+
+<section style="padding-top:0" id="faq"><div class="wrap" style="max-width:780px">
+  <div class="eyebrow">FAQ</div>
+  <h2>Domande frequenti</h2><br>
+  <details open><summary>Devo venire con un amico?</summary><p>No, puoi venire da solo. Se vuoi essere presentato, ti aiutiamo a trovare il formato giusto.</p></details>
+  <details><summary>Dress code?</summary><p>Smart casual: vieni comodo, ma con la maglia bella.</p></details>
+  <details><summary>Come preparo il pitch?</summary><p>Cinque minuti a voce, anche con un PDF di massimo 10 pagine.</p></details>
+  <details><summary>Posso comprare più biglietti insieme?</summary><p>Sì, in un'unica transazione: ogni biglietto ha il suo QR code.</p></details>
+</div></section>
+
+<footer><div class="wrap">
+  <div><div class="logo" style="display:inline-flex;margin-bottom:12px"><b>Pitcha</b><b>l'Amico</b></div><br>© Pitcha l'Amico</div>
+  <div><a href="#">Termini</a><a href="#">Privacy</a><a href="#">Cookie</a><a href="#">Contatti</a></div>
+</div></footer>
+
+<section class="spec"><div class="wrap">
+  <div class="eyebrow">Linee guida della proposta</div>
+  <h2>Palette e tipografia</h2>
+  <div class="sw">
+    <div><i style="background:#FF5A5F"></i><span>Corallo<br>#FF5A5F</span></div>
+    <div><i style="background:#E81F32"></i><span>Rosso<br>#E81F32</span></div>
+    <div><i style="background:#FCEFB4"></i><span>Crema<br>#FCEFB4</span></div>
+    <div><i style="background:#FFF8EA"></i><span>Carta<br>#FFF8EA</span></div>
+    <div><i style="background:#F99C00"></i><span>Ambra<br>#F99C00</span></div>
+    <div><i style="background:#1B1212"></i><span style="color:#1B1212">Inchiostro<br>#1B1212</span></div>
+  </div>
+  <div class="sample"><span class="disp" style="font-size:44px;color:var(--red)">Lilita One – titoli</span><span style="font-size:20px">DM Sans – testi e interfaccia</span></div>
+  <p style="margin-top:20px;max-width:640px">Colori ereditati dal logo attuale; font da verificare con il materiale originale. Stile: bordi netti, ombre piene, carte leggermente ruotate per un tono giocoso ma ordinato.</p>
+</div></section>
+</body>
+</html>
