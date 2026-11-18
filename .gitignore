@@ -1,3 +1,6 @@
 *.md
 *.py
 *.pdf
+
+/documenti_amministrativi
+/public
