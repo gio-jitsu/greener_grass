@@ -1,6 +1,7 @@
 *.md
 *.py
 *.pdf
+preventivo-*.html
 
 /documenti_amministrativi
 /public
